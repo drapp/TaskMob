@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:weightSum="1"
+	android:orientation="vertical">
+	
+	<!-- login & create user -->
+    <TextView
+    	android:textAppearance="?android:attr/textAppearanceLarge"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:id="@+id/textView1"
+    	android:text="User"></TextView>				      	
+    <EditText
+    	android:inputType="text"
+    	android:layout_height="wrap_content"
+    	android:id="@+id/username"
+    	android:layout_width="200dp" android:text="@string/username_field"></EditText>
+    <EditText
+    	android:inputType="textPassword"
+    	android:layout_height="wrap_content"
+    	android:id="@+id/password"
+    	android:layout_width="200dp" android:text="@string/password_field"></EditText>
+    <Button
+    	android:layout_height="wrap_content"
+    	android:text="Create User"
+    	android:id="@+id/button1"
+    	android:layout_weight="0.01"
+    	android:layout_width="wrap_content"
+    	android:onClick="createUserClick"></Button>
+    <Button
+    	android:layout_weight="0.01"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:onClick="loginClick"
+    	android:text="Login"
+    	android:gravity="center"></Button>
+    
+    <!-- C2DM -->
+    <TextView
+    	android:textAppearance="?android:attr/textAppearanceLarge"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:id="@+id/textView2"
+    	android:text="Android Push"></TextView>
+    <Button android:layout_weight="0.01"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:onClick="getRegTokenClick"
+    	android:text="Get Stored Registration ID"
+    	android:gravity="center"></Button>
+    <Button android:layout_weight="0.01"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:onClick="forceGetRegTokenClick"
+    	android:text="Force Get New Registration ID"
+    	android:gravity="center"></Button>
+    <EditText
+    	android:layout_height="wrap_content"
+    	android:id="@+id/push_username"
+    	android:text="@string/username_field"
+    	android:layout_width="wrap_content"></EditText>
+    <Button
+    	android:layout_weight="0.01"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:onClick="registerRegTokenClick"
+    	android:text="Register Registration ID With Stackmob"
+    	android:gravity="center"></Button>
+    <EditText android:inputType="text" android:layout_width="200dp" android:layout_height="wrap_content" android:text="@string/data_field" android:id="@+id/token_username">
+        <requestFocus></requestFocus>
+    </EditText>
+    <Button
+    	android:layout_weight="0.01"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:onClick="sendPushClick"
+    	android:text="Send Push Message To This Phone"
+    	android:gravity="center"></Button>
+    	
+</LinearLayout>

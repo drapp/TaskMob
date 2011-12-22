@@ -1,0 +1,12 @@
+bin
+.directory
+.DS_Store
+*.class
+*~
+gen
+target
+
+tmp
+*.iws
+*.ipr
+*.iml
