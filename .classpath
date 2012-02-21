@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="stackmob-StackMob_Android-ad86880/src"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="lib" path="stackmob-StackMob_Android-ad86880/assets/android-facebook-1.4.jar"/>
-	<classpathentry kind="lib" path="stackmob-StackMob_Android-ad86880/assets/gson-1.7.2.jar"/>
-	<classpathentry kind="lib" path="stackmob-StackMob_Android-ad86880/assets/scribe-1.2.3.jar"/>
-	<classpathentry kind="lib" path="stackmob-StackMob_Android-ad86880/assets/signpost-commonshttp4-1.2.1.1.jar"/>
-	<classpathentry kind="lib" path="stackmob-StackMob_Android-ad86880/assets/signpost-core-1.2.1.1.jar"/>
-	<classpathentry kind="lib" path="stackmob-StackMob_Android-ad86880/assets/stackmob-java-client-sdk-0.3.0.jar"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="src" path="stackmob-StackMob_Android-6fd6c22/src"/>
+	<classpathentry kind="lib" path="stackmob-StackMob_Android-6fd6c22/assets/android-facebook-1.4.jar"/>
+	<classpathentry kind="lib" path="stackmob-StackMob_Android-6fd6c22/assets/gson-1.7.2.jar"/>
+	<classpathentry kind="lib" path="stackmob-StackMob_Android-6fd6c22/assets/scribe-1.2.3.jar"/>
+	<classpathentry kind="lib" path="stackmob-StackMob_Android-6fd6c22/assets/signpost-commonshttp4-1.2.1.1.jar"/>
+	<classpathentry kind="lib" path="stackmob-StackMob_Android-6fd6c22/assets/signpost-core-1.2.1.1.jar"/>
+	<classpathentry kind="lib" path="stackmob-StackMob_Android-6fd6c22/assets/stackmob-java-client-sdk-0.3.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
