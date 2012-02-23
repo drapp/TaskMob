@@ -58,8 +58,6 @@ public class AndroidStarterActivity extends Activity {
 		StackMobCommon.API_SECRET = "YOUR_API_SECRET_HERE";
 		StackMobCommon.USER_OBJECT_NAME = "user";
 		StackMobCommon.API_VERSION = 0;
-		StackMobCommon.API_URL_FORMAT = "127.0.0.1:9090";
-		StackMobCommon.PUSH_API_URL_FORMAT = "127.0.0.1:9191";
 		stackmob = StackMobCommon.getStackMobInstance();
 	}
 
