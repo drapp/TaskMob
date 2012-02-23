@@ -8,6 +8,6 @@
 	<classpathentry kind="lib" path="assets/scribe-1.2.3.jar"/>
 	<classpathentry kind="lib" path="assets/signpost-commonshttp4-1.2.1.1.jar"/>
 	<classpathentry kind="lib" path="assets/signpost-core-1.2.1.1.jar"/>
-	<classpathentry kind="lib" path="assets/stackmob-java-client-sdk-0.3.2.jar"/>
+	<classpathentry kind="lib" path="assets/stackmob-java-client-sdk-0.3.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
