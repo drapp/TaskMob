@@ -53,19 +53,17 @@ public class AndroidStarterActivity extends Activity {
 		}
 	};
 	
-	public AndroidStarterActivity() {
-		StackMobCommon.API_KEY = "YOUR_API_KEY_HERE";
-		StackMobCommon.API_SECRET = "YOUR_API_SECRET_HERE";
-		StackMobCommon.USER_OBJECT_NAME = "user";
-		StackMobCommon.API_VERSION = 0;
-		stackmob = StackMobCommon.getStackMobInstance();
-	}
-
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		StackMobCommon.API_KEY = "YOUR_API_KEY_HERE";
+		StackMobCommon.API_SECRET = "YOUR_API_SECRET_HERE";
+		StackMobCommon.USER_OBJECT_NAME = "user";
+		StackMobCommon.API_VERSION = 0;
+		StackMobCommon.init(this.getApplicationContext());
+		stackmob = StackMobCommon.getStackMobInstance();
 		
 		C2DMRegistrationIDHolder regHolder = new C2DMRegistrationIDHolder(this);
 		if(regHolder.hasID()) {

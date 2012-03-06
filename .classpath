@@ -10,5 +10,5 @@
 	<classpathentry kind="lib" path="stackmob-StackMob_Android-f934e2a/assets/signpost-commonshttp4-1.2.1.1.jar"/>
 	<classpathentry kind="lib" path="stackmob-StackMob_Android-f934e2a/assets/signpost-core-1.2.1.1.jar"/>
 	<classpathentry kind="lib" path="stackmob-StackMob_Android-f934e2a/assets/stackmob-java-client-sdk-0.3.3.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
