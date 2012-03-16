@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, AndroidStarterActivity!</string>
-    <string name="app_name">AndroidStarter</string>
-    <string name="username_field">Username</string>
-    <string name="password_field">Password</string>
-    <string name="data_field">Push Data</string>
+    <string name="app_name">TaskMob</string>
+	<string name="no_tasklists">No tasks to display</string>
+	<string name="add_tasklist">Add</string>
+	<string name="add_tasklist_hint">Add Task List Here</string>
+    
 </resources>
