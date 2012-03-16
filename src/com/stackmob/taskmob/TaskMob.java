@@ -10,16 +10,18 @@ import com.stackmob.sdk.exception.StackMobException;
 import com.stackmob.sdk.model.StackMobModelQuery;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class TaskMob extends ListActivity {
 
-	private StackMobModelQuery<TaskList> tasksQuery = new StackMobModelQuery<TaskList>(TaskList.class);
+	private StackMobModelQuery<TaskList> tasksQuery = new StackMobModelQuery<TaskList>(TaskList.class).expandDepthIs(1);
 	private TaskListAdapter adapter;
 	private Button addTaskListButton;
 	private TextView addTaskListName;
@@ -43,6 +45,15 @@ public class TaskMob extends ListActivity {
 			public void onClick(View v) {
 				addTaskList(addTaskListName.getText().toString());
 			}
+		});
+		getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		    @Override
+		    public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
+		    	Toast.makeText(getApplicationContext(), "click on " + pos, 5).show();
+		    	Intent i = new Intent(getApplicationContext(), TaskActivity.class);
+		    	i.putExtra("task_list", adapter.getItem(pos).toJson(1));
+		    	startActivity(i);
+		    }
 		});
 
 		loadTasks();

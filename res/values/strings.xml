@@ -4,5 +4,7 @@
 	<string name="no_tasklists">No tasks to display</string>
 	<string name="add_tasklist">Add</string>
 	<string name="add_tasklist_hint">Add Task List Here</string>
+	<string name="task_list">Task List</string>
+	<string name="add_task">Add Task</string>
     
 </resources>
