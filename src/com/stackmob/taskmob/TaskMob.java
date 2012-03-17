@@ -49,7 +49,7 @@ public class TaskMob extends ListActivity {
 		getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
 		    @Override
 		    public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
-		    	Toast.makeText(getApplicationContext(), "click on " + pos, 5).show();
+		    	//Toast.makeText(getApplicationContext(), "click on " + pos, 5).show();
 		    	Intent i = new Intent(getApplicationContext(), TaskActivity.class);
 		    	i.putExtra("task_list", adapter.getItem(pos).toJson(1));
 		    	startActivity(i);

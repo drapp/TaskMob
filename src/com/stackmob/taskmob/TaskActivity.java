@@ -13,6 +13,7 @@ import android.widget.Toast;
 public class TaskActivity extends ListActivity {
 	private TaskList taskList;
 	private Button addTaskButton;
+	private TaskAdapter adapter;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,6 +24,9 @@ public class TaskActivity extends ListActivity {
 		} catch (StackMobException e) {
 			Toast.makeText(getApplicationContext(), "Error deserializing " + e.getMessage(), 5);
 		}
+		
+		adapter = new TaskAdapter(getApplicationContext(), R.layout.tasklistrow, taskList.getTasks());
+		setListAdapter(adapter);
 
 		addTaskButton = (Button) this.findViewById(R.id.add_task_button);
 		addTaskButton.setOnClickListener(new OnClickListener() {

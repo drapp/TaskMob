@@ -22,4 +22,12 @@ public class Task extends StackMobModel {
 	public Task(String name, String details, TaskList list) {
 		this();
 	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public int getPriority() {
+		return priority;
+	}
 }
