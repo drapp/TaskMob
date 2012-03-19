@@ -6,5 +6,15 @@
 	<string name="add_tasklist_hint">Add Task List Here</string>
 	<string name="task_list">Task List</string>
 	<string name="add_task">Add Task</string>
+	<string name="new_task_hint">Task Name</string>
+	<string name="change_date">Change the Due Date</string>
+	<string name="date_display">Due Date: None</string>
+	<string name="priority">Priority</string>
+	<string-array name="priorities">
+        <item>Normal Priority</item>
+        <item>High Priority</item>
+    </string-array>
+	
+	
     
 </resources>

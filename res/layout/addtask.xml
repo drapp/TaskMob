@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:weightSum="1"
+	android:orientation="vertical">
+	
+	<!-- login & create user -->
+			      	
+    <EditText
+        android:hint="@string/new_task_hint"
+    	android:inputType="text"
+    	android:layout_height="wrap_content"
+    	android:id="@+id/new_task_name"
+    	android:layout_width="200dp">
+    	<requestFocus></requestFocus>
+    	</EditText>	
+    <TextView android:id="@+id/date_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_display"/>
+    <Button android:id="@+id/change_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change_date"/>
+    <Spinner 
+        android:id="@+id/spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/priority"
+    />
+    
+    <Button
+    	android:text="@string/add_task"
+    	android:id="@+id/add_task_button2"
+    	android:layout_weight="0.01"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+    	android:onClick="createUserClick"></Button>
+    	
+</LinearLayout>

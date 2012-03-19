@@ -2,8 +2,8 @@ package com.stackmob.taskmob;
 
 import com.stackmob.sdk.exception.StackMobException;
 
-import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -33,9 +33,23 @@ public class TaskActivity extends ListActivity {
 
 			@Override
 			public void onClick(View v) {
-			
+		    	startActivityForResult(new Intent(getApplicationContext(), AddTaskActivity.class),0);
 			}
 		});
 		Toast.makeText(getApplicationContext(), "got taskList " + taskList.getName(), 5).show();
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		try {
+			Task t = new Task();
+			t.fillFromJson(data.getStringExtra("new_task"));
+			taskList.getTasks().add(t);
+			taskList.saveWithDepth(1);
+			adapter.add(t);
+			adapter.notifyDataSetChanged();
+		} catch (StackMobException e) {
+		}
 	}
 }
