@@ -20,8 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class TaskMob extends ListActivity {
+	protected static final String TASKLIST_KEY = "task_list";
+	protected static final String TASKLIST_RETURN_KEY = "modified_task_list";
+	protected static final String TASKLIST_INDEX = "task_list_index";
 
-	private StackMobModelQuery<TaskList> tasksQuery = new StackMobModelQuery<TaskList>(TaskList.class).expandDepthIs(1);
+	private StackMobModelQuery<TaskList> tasksQuery = new StackMobModelQuery<TaskList>(TaskList.class).expandDepthIs(1).fieldIsLessThanOrEqualTo("name", "foo");
 	private TaskListAdapter adapter;
 	private Button addTaskListButton;
 	private TextView addTaskListName;
@@ -50,8 +53,9 @@ public class TaskMob extends ListActivity {
 		    @Override
 		    public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
 		    	Intent i = new Intent(getApplicationContext(), TaskActivity.class);
+		    	i.putExtra("task_list_index", pos);
 		    	i.putExtra("task_list", adapter.getItem(pos).toJson(1));
-		    	startActivity(i);
+		    	startActivityForResult(i, 0);
 		    }
 		});
 
@@ -97,5 +101,15 @@ public class TaskMob extends ListActivity {
 			}
 		});
 
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		try {
+			if(data.getExtras().containsKey(TASKLIST_INDEX) && data.getExtras().containsKey(TASKLIST_RETURN_KEY))
+			adapter.getItem(data.getIntExtra(TASKLIST_INDEX, 0)).fillFromJson(data.getStringExtra(TASKLIST_RETURN_KEY));
+			adapter.notifyDataSetChanged();
+		} catch (StackMobException e) {
+		}
 	}
 }

@@ -40,6 +40,10 @@ public class Task extends StackMobModel {
 		return done;
 	}
 	
+	public void setDone(boolean done) {
+		this.done = done;
+	}
+	
 	public Date getDueDate() {
 		return dueDate;
 	}

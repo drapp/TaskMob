@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class AddTaskActivity extends Activity{
 
@@ -84,9 +83,6 @@ public class AddTaskActivity extends Activity{
 	    switch (id) {
 	    case DATE_DIALOG:
 	    	Date dateToDisplay = task.getDueDate() == null ? new Date() : task.getDueDate();
-	    	int year = dateToDisplay.getYear();
-	    	int month = dateToDisplay.getMonth();
-	    	int day = dateToDisplay.getDate();
 	        return new DatePickerDialog(this, dateSetListener, dateToDisplay.getYear() + 1900, dateToDisplay.getMonth(), dateToDisplay.getDate());
 	    }
 	    return null;
