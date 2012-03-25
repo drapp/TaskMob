@@ -24,7 +24,7 @@ public class TaskMob extends ListActivity {
 	protected static final String TASKLIST_RETURN_KEY = "modified_task_list";
 	protected static final String TASKLIST_INDEX = "task_list_index";
 
-	private StackMobModelQuery<TaskList> tasksQuery = new StackMobModelQuery<TaskList>(TaskList.class).expandDepthIs(1).fieldIsLessThanOrEqualTo("name", "foo");
+	private StackMobModelQuery<TaskList> tasksQuery = new StackMobModelQuery<TaskList>(TaskList.class).expandDepthIs(1);
 	private TaskListAdapter adapter;
 	private Button addTaskListButton;
 	private TextView addTaskListName;
@@ -106,9 +106,11 @@ public class TaskMob extends ListActivity {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		try {
-			if(data.getExtras().containsKey(TASKLIST_INDEX) && data.getExtras().containsKey(TASKLIST_RETURN_KEY))
-			adapter.getItem(data.getIntExtra(TASKLIST_INDEX, 0)).fillFromJson(data.getStringExtra(TASKLIST_RETURN_KEY));
-			adapter.notifyDataSetChanged();
+			if(data.getExtras().containsKey(TASKLIST_INDEX) && data.getExtras().containsKey(TASKLIST_RETURN_KEY)) {
+				String returnedJson = data.getStringExtra(TASKLIST_RETURN_KEY);
+				adapter.getItem(data.getIntExtra(TASKLIST_INDEX, 0)).fillFromJson(data.getStringExtra(TASKLIST_RETURN_KEY));
+				adapter.notifyDataSetChanged();
+			}
 		} catch (StackMobException e) {
 		}
 	}
