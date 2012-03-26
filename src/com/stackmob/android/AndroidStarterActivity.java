@@ -16,6 +16,8 @@
 
 package com.stackmob.android;
 
+import com.inneractive.api.ads.InneractiveAd;
+import com.inneractive.api.ads.InneractiveAd.IaAdType;
 import com.stackmob.android.R;
 import android.app.Activity;
 import android.os.Bundle;
@@ -30,6 +32,7 @@ import com.stackmob.sdk.exception.StackMobException;
 import com.stackmob.sdk.push.StackMobPushToken;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 import android.widget.EditText;
 import com.stackmob.android.sdk.common.StackMobCommon;
@@ -77,7 +80,9 @@ public class AndroidStarterActivity extends Activity {
 		else {
 			Log.i(TAG, "registration ID was not already stored in shared prefs. fetching a new one and saving it");
 			registerForC2DM();
-		}		
+		}
+		//Uncomment for an example of how to display a banner ad with Inneractive
+		//InneractiveAd.displayAd(this.getApplicationContext(), (ViewGroup) findViewById(android.R.id.content).getRootView(), APP_ID, IaAdType.Banner, 120);
     }
     
 	public void loginClick(View v) {
