@@ -18,9 +18,12 @@ package com.stackmob.android;
 
 import com.inneractive.api.ads.InneractiveAd;
 import com.inneractive.api.ads.InneractiveAd.IaAdType;
+import com.inneractive.api.ads.InneractiveAd.IaOptionalParams;
 import com.stackmob.android.R;
 import android.app.Activity;
 import android.os.Bundle;
+
+import java.util.Hashtable;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
@@ -36,10 +39,14 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import android.widget.EditText;
 import com.stackmob.android.sdk.common.StackMobCommon;
+
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.Context;
+import android.content.IntentFilter;
 
 
 public class AndroidStarterActivity extends Activity {
@@ -53,6 +60,13 @@ public class AndroidStarterActivity extends Activity {
 		@Override public void failure(StackMobException e) {
 			threadAgnosticToast(AndroidStarterActivity.this, "error: " + e.getMessage(), Toast.LENGTH_SHORT);
 			Log.i(TAG, "request had exception " + e.getMessage());
+		}
+	};
+	private BroadcastReceiver inneractiveMessageReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) { 
+			String message = intent.getStringExtra("message");
+			Toast.makeText(getApplicationContext(), message, 5);
 		}
 	};
 	
@@ -82,7 +96,12 @@ public class AndroidStarterActivity extends Activity {
 			registerForC2DM();
 		}
 		//Uncomment for an example of how to display a banner ad with Inneractive
+		//LocalBroadcastManager.getInstance(this).registerReceiver(inneractiveMessageReceiver, new IntentFilter("InneractiveAd"));
 		//InneractiveAd.displayAd(this.getApplicationContext(), (ViewGroup) findViewById(android.R.id.content).getRootView(), APP_ID, IaAdType.Banner, 120);
+		//A fullscreen ad with some metadata
+		//Hashtable<IaOptionalParams, String> metaData = new Hashtable<IaOptionalParams, String>();
+		//metaData.put(InneractiveAd.IaOptionalParams.Key_Age, "33"); metaData.put(InneractiveAd.IaOptionalParams.Key_Gender, "F");
+		//InneractiveAd.displayAd(getApplicationContext(), (ViewGroup) findViewById(android.R.id.content), APP_ID, IaAdType.Interstitial, 120, metaData);
     }
     
 	public void loginClick(View v) {
