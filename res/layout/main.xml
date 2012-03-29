@@ -4,21 +4,21 @@
    android:layout_width="fill_parent"
    android:layout_height="fill_parent"
    >
-   <RelativeLayout 
-	android:layout_width="fill_parent" 
-	android:layout_height="wrap_content" 
-	xmlns:android="http://schemas.android.com/apk/res/android">
-	<EditText
-	    android:inputType="text" android:hint="@string/add_tasklist_hint"
-		android:width="250dp" android:id="@+id/add_tasklist_text"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"/>
-	<Button android:layout_width="fill_parent"
-    	android:layout_height="wrap_content" android:id="@+id/add_tasklist_button"
-    	android:text="@string/add_tasklist" 
-    	android:layout_toRightOf="@id/add_tasklist_text"
-		android:layout_alignBaseline="@id/add_tasklist_text" />
-	</RelativeLayout>
+   <RelativeLayout
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+xmlns:android="http://schemas.android.com/apk/res/android">
+<EditText
+android:inputType="text" android:hint="@string/add_tasklist_hint"
+android:width="250dp" android:id="@+id/add_tasklist_text"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"/>
+<Button android:layout_width="fill_parent"
+     android:layout_height="wrap_content" android:id="@+id/add_tasklist_button"
+     android:text="@string/add_tasklist"
+     android:layout_toRightOf="@id/add_tasklist_text"
+android:layout_alignBaseline="@id/add_tasklist_text" />
+</RelativeLayout>
 <ListView
     android:id="@+id/android:list"
     android:layout_width="fill_parent"

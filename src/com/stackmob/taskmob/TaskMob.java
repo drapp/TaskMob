@@ -107,7 +107,6 @@ public class TaskMob extends ListActivity {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		try {
 			if(data.getExtras().containsKey(TASKLIST_INDEX) && data.getExtras().containsKey(TASKLIST_RETURN_KEY)) {
-				String returnedJson = data.getStringExtra(TASKLIST_RETURN_KEY);
 				adapter.getItem(data.getIntExtra(TASKLIST_INDEX, 0)).fillFromJson(data.getStringExtra(TASKLIST_RETURN_KEY));
 				adapter.notifyDataSetChanged();
 			}
