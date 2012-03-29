@@ -41,7 +41,6 @@ import android.widget.Toast;
 import android.widget.EditText;
 import com.stackmob.android.sdk.common.StackMobCommon;
 
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
