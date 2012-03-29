@@ -1,7 +1,6 @@
 # TaskMob
 TaskMob is a little TODO list app meant to show off the features in StackMob. The app itself is trivial, but the key is all the complicated networking code that isn't there. StackMob provides seamles APIs to integrate your app with the cloud.
 
-
 # Copyright
 Copyright 2012 StackMob
 
