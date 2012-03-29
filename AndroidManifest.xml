@@ -21,8 +21,6 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="com.inneractive.api.ads.InneractiveFullScreenView"> </activity>
-        
         <!-- receiving the registration ID -->	
     	<receiver android:name=".C2DMRegistrationReceiver" android:permission="com.google.android.c2dm.permission.SEND">    	    		
     		<intent-filter>
