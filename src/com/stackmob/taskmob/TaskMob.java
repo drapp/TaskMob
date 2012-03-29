@@ -54,7 +54,7 @@ public class TaskMob extends ListActivity {
 		    public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
 		    	Intent i = new Intent(getApplicationContext(), TaskActivity.class);
 		    	i.putExtra("task_list_index", pos);
-		    	i.putExtra("task_list", adapter.getItem(pos).toJson(1));
+		    	i.putExtra("task_list", adapter.getItem(pos).toJsonWithDepth(1));
 		    	startActivityForResult(i, 0);
 		    }
 		});
