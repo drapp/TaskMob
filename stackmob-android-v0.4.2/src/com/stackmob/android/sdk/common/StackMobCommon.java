@@ -39,6 +39,8 @@ public class StackMobCommon {
 	
 	public static String FACEBOOK_APP_ID = "YOUR_FACEBOOK_APP_ID_HERE";
 	
+	public static boolean LOGGING_ENABLED = false;
+	
 	public static StackMobTwitterCallback TwitterCallback = null;
 	public static StackMobFacebookCallback FacebookCallback = null;
 
@@ -53,6 +55,8 @@ public class StackMobCommon {
 	public static void init(Context c) {
 		StackMob.setStackMob(new StackMob(API_KEY, API_SECRET, USER_OBJECT_NAME, API_VERSION, API_URL_FORMAT, PUSH_API_URL_FORMAT, redirectedCallback));
 		StackMob.setUserAgentName("Android");
+		StackMob.setLogger(new StackMobAndroidLogger());
+		StackMob.getLogger().setLogging(LOGGING_ENABLED);
 		StackMobRequest.setCookieStore(new StackMobAndroidCookieStore(c));
 		initialized = true;
 	}
