@@ -1,3 +1,13 @@
-.DS_Store
 bin
+.directory
+.DS_Store
+*.class
+*~
+gen
+target
 project.properties
+
+tmp
+*.iws
+*.ipr
+*.iml
