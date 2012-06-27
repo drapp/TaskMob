@@ -10,6 +10,6 @@
 	<classpathentry kind="lib" path="assets/signpost-core-1.2.1.1.jar"/>
 	<classpathentry kind="lib" path="assets/gson-2.1.jar"/>
 	<classpathentry kind="lib" path="assets/inneractiveAdSDK-v3.1.2-S.jar"/>
-	<classpathentry kind="lib" path="assets/stackmob-java-client-sdk-0.4.5.jar"/>
+	<classpathentry kind="lib" path="assets/stackmob-java-client-sdk-0.4.7.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
