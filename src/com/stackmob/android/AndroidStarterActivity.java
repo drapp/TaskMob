@@ -74,6 +74,7 @@ public class AndroidStarterActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		StackMobCommon.OAUTH_VERSION = StackMob.OAuthVersion.One;
 		StackMobCommon.API_KEY = "YOUR_API_KEY_HERE";
 		StackMobCommon.API_SECRET = "YOUR_API_SECRET_HERE";
 		StackMobCommon.USER_OBJECT_NAME = "user";
