@@ -15,6 +15,10 @@
         <item>Normal Priority</item>
         <item>High Priority</item>
     </string-array>
+   	<string name="username">Username</string>
+   	<string name="password">Password</string>
+   	<string name="login">Login</string>
+   	<string name="createuser">Create User</string>
 	
 	
     

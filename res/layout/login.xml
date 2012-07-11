@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:weightSum="1"
+	android:orientation="vertical">
+	
+	<!-- login & create user -->
+			      	
+    <EditText
+        android:hint="@string/username"
+    	android:inputType="text"
+    	android:layout_height="wrap_content"
+    	android:id="@+id/username"
+    	android:layout_width="200dp">
+    	<requestFocus></requestFocus>
+    	</EditText>	
+    	
+    <EditText
+        android:hint="@string/password"
+    	android:inputType="textPassword"
+    	android:layout_height="wrap_content"
+    	android:id="@+id/password"
+    	android:layout_width="200dp">
+    </EditText>	
+
+
+    <Button
+    	android:text="@string/login"
+    	android:id="@+id/login"
+    	android:layout_weight="0.01"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+    	android:onClick="createUserClick">
+    </Button>
+        <Button
+    	android:text="@string/createuser"
+    	android:id="@+id/createuser"
+    	android:layout_weight="0.01"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+    	android:onClick="createUserClick">
+    </Button>
+    	
+</LinearLayout>
