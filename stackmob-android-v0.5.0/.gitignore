@@ -5,6 +5,7 @@ bin
 *~
 gen
 target
+project.properties
 
 tmp
 *.iws
