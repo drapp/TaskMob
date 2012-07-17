@@ -9,6 +9,7 @@ import com.stackmob.sdk.api.StackMob;
 import com.stackmob.sdk.callback.StackMobCallback;
 import com.stackmob.sdk.callback.StackMobNoopCallback;
 import com.stackmob.sdk.exception.StackMobException;
+import com.stackmob.sdk.push.StackMobPushToken.TokenType;
 
 public class GCMIntentService extends GCMBaseIntentService {
 	
@@ -39,7 +40,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 	@Override
 	protected void onUnregistered(Context arg0, String arg1) {
-		//StackMob.getStackMob().removePushToken(regId, "androidGCM", new StackMobNoopCallback());
+		StackMob.getStackMob().removePushToken(regId, TokenType.Android, new StackMobNoopCallback());
 	}
 
 }
