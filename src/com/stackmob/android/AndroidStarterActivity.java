@@ -41,12 +41,15 @@ import com.stackmob.sdk.callback.StackMobCallback;
 import com.stackmob.sdk.exception.StackMobException;
 import com.stackmob.sdk.push.StackMobPushToken;
 
+import com.google.android.gcm.GCMRegistrar;
 import com.inneractive.api.ads.InneractiveAd;
 import com.inneractive.api.ads.InneractiveAd.IaAdType;
 import com.inneractive.api.ads.InneractiveAd.IaOptionalParams;
 
 
 public class AndroidStarterActivity extends Activity {
+	
+	public static String SENDER_ID = "YOUR_SENDER_ID_HERE";
 	private StackMob stackmob;
 	private static final String TAG = AndroidStarterActivity.class.getCanonicalName();
 	private final StackMobCallback standardToastCallback = new StackMobCallback() {
@@ -82,6 +85,16 @@ public class AndroidStarterActivity extends Activity {
 		StackMobCommon.init(this.getApplicationContext());
 		stackmob = StackMobCommon.getStackMobInstance();
 		
+		GCMRegistrar.checkDevice(this);
+		GCMRegistrar.checkManifest(this);
+		final String regId = GCMRegistrar.getRegistrationId(this);
+		if (regId.equals("")) {
+		  GCMRegistrar.register(this, SENDER_ID);
+		} else {
+		  Log.v(TAG, "Already registered");
+		}
+		
+		/*
 		C2DMRegistrationIDHolder regHolder = new C2DMRegistrationIDHolder(this);
 		if(regHolder.hasID()) {
 			try {
@@ -95,6 +108,7 @@ public class AndroidStarterActivity extends Activity {
 			Log.i(TAG, "registration ID was not already stored in shared prefs. fetching a new one and saving it");
 			registerForC2DM();
 		}
+		*/
 		//Uncomment for an example of how to display a banner ad with Inneractive
 		//LocalBroadcastManager.getInstance(this).registerReceiver(inneractiveMessageReceiver, new IntentFilter("InneractiveAd"));
 		//InneractiveAd.displayAd(this.getApplicationContext(), (ViewGroup) findViewById(R.id.linear), APP_ID, IaAdType.Banner, 120);
@@ -166,7 +180,7 @@ public class AndroidStarterActivity extends Activity {
 	private void registerForC2DM() {
 		Intent intent = new Intent("com.google.android.c2dm.intent.REGISTER");
 		intent.putExtra("app", PendingIntent.getBroadcast(this, 0, new Intent(), 0));
-		intent.putExtra("sender", "aaron@stackmob.com");
+		intent.putExtra("sender", "570878405761");
 		startService(intent);
 	}
 
