@@ -19,19 +19,19 @@ package com.stackmob.android;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class C2DMRegistrationIDHolder {
+public class PushRegistrationIDHolder {
 	public static class NoStoredRegistrationIDException extends Exception {
 		private static final long serialVersionUID = -4109182687918155379L;
 		public NoStoredRegistrationIDException(String s) {
 			super(s);
 		}
 	}
-	private final String TAG = C2DMRegistrationIDHolder.class.getCanonicalName();
+	private final String TAG = PushRegistrationIDHolder.class.getCanonicalName();
 	private final String KEY = "registrationID";
 	
 	private Context context;
 	private SharedPreferences prefs;
-	public C2DMRegistrationIDHolder(Context ctx) {
+	public PushRegistrationIDHolder(Context ctx) {
 		this.context = ctx;
 		this.prefs = this.context.getSharedPreferences(TAG, Context.MODE_PRIVATE);
 	}

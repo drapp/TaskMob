@@ -25,22 +25,6 @@
         
         <activity android:name="com.inneractive.api.ads.InneractiveFullScreenView"> </activity>
         
-        <!-- receiving the registration ID -->	
-    	<receiver android:name=".C2DMRegistrationReceiver" android:permission="com.google.android.c2dm.permission.SEND">    	    		
-    		<intent-filter>
-	    		<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-    			<category android:name="com.stackmob.android" />
-    		</intent-filter>
-    	</receiver>
-		
-		<!-- receiving messages -->    
-    	<receiver android:name=".C2DMPayloadReceiver" android:permission="com.google.android.c2dm.permission.SEND">
-    		<intent-filter>
-	    		<action android:name="com.google.android.c2dm.intent.RECEIVE" />
-    			<category android:name="com.stackmob.android" />
-    		</intent-filter>
-    	</receiver>
-    	
     	<receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
   			<intent-filter>
     			<action android:name="com.google.android.c2dm.intent.RECEIVE" />

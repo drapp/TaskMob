@@ -32,7 +32,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 	@Override
 	protected void onRegistered(Context ctx, String regId) {
 		this.regId = regId;
-		C2DMRegistrationIDHolder holder = new C2DMRegistrationIDHolder(ctx);
+		PushRegistrationIDHolder holder = new PushRegistrationIDHolder(ctx);
 		holder.setID(regId);
 		
 	}

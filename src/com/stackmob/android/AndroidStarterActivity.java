@@ -85,30 +85,16 @@ public class AndroidStarterActivity extends Activity {
 		StackMobCommon.init(this.getApplicationContext());
 		stackmob = StackMobCommon.getStackMobInstance();
 		
+		// Register for GCM Push
 		GCMRegistrar.checkDevice(this);
 		GCMRegistrar.checkManifest(this);
 		final String regId = GCMRegistrar.getRegistrationId(this);
 		if (regId.equals("")) {
-		  GCMRegistrar.register(this, SENDER_ID);
+			registerForPush();
 		} else {
 		  Log.v(TAG, "Already registered");
 		}
-		
-		/*
-		C2DMRegistrationIDHolder regHolder = new C2DMRegistrationIDHolder(this);
-		if(regHolder.hasID()) {
-			try {
-				Log.i(TAG, "registration ID " + regHolder.getID() + " was already stored in shared prefs");
-			}
-			catch (C2DMRegistrationIDHolder.NoStoredRegistrationIDException e) {
-				Log.e(TAG, "failed to get registration ID from shared prefs, even though shared prefs reports that it's there" , e);
-			}
-		}
-		else {
-			Log.i(TAG, "registration ID was not already stored in shared prefs. fetching a new one and saving it");
-			registerForC2DM();
-		}
-		*/
+
 		//Uncomment for an example of how to display a banner ad with Inneractive
 		//LocalBroadcastManager.getInstance(this).registerReceiver(inneractiveMessageReceiver, new IntentFilter("InneractiveAd"));
 		//InneractiveAd.displayAd(this.getApplicationContext(), (ViewGroup) findViewById(R.id.linear), APP_ID, IaAdType.Banner, 120);
@@ -140,7 +126,7 @@ public class AndroidStarterActivity extends Activity {
 			final String registrationID = getRegistrationIDHolder().getID();
 			stackmob.registerForPushWithUser(username, registrationID, standardToastCallback);
 		}
-		catch(C2DMRegistrationIDHolder.NoStoredRegistrationIDException e) {
+		catch(PushRegistrationIDHolder.NoStoredRegistrationIDException e) {
 			threadAgnosticToast(AndroidStarterActivity.this, "no registration ID currently stored", Toast.LENGTH_SHORT);
 		}
 		
@@ -154,7 +140,7 @@ public class AndroidStarterActivity extends Activity {
 			tokens.add(new StackMobPushToken(getRegistrationIDHolder().getID(), StackMobPushToken.TokenType.Android));
 			stackmob.pushToTokens(payload, tokens, standardToastCallback);
 		}
-		catch(C2DMRegistrationIDHolder.NoStoredRegistrationIDException e) {
+		catch(PushRegistrationIDHolder.NoStoredRegistrationIDException e) {
 			threadAgnosticToast(AndroidStarterActivity.this, "no registration ID currently stored", Toast.LENGTH_SHORT);
 		}
 	}
@@ -163,25 +149,22 @@ public class AndroidStarterActivity extends Activity {
 		try {
 			threadAgnosticToast(AndroidStarterActivity.this, getRegistrationIDHolder().getID(), Toast.LENGTH_SHORT);
 		}
-		catch(C2DMRegistrationIDHolder.NoStoredRegistrationIDException e) {
+		catch(PushRegistrationIDHolder.NoStoredRegistrationIDException e) {
 			threadAgnosticToast(AndroidStarterActivity.this, "no registration ID currently stored", Toast.LENGTH_SHORT);
 		}
 	}
 	
 	public void forceGetRegTokenClick(View w) {
-		registerForC2DM();
+		registerForPush();
 		threadAgnosticToast(AndroidStarterActivity.this, "sent intent to get reg ID", Toast.LENGTH_SHORT);
 	}
 	
-	private C2DMRegistrationIDHolder getRegistrationIDHolder() {
-		return new C2DMRegistrationIDHolder(AndroidStarterActivity.this);
+	private PushRegistrationIDHolder getRegistrationIDHolder() {
+		return new PushRegistrationIDHolder(AndroidStarterActivity.this);
 	}
 	
-	private void registerForC2DM() {
-		Intent intent = new Intent("com.google.android.c2dm.intent.REGISTER");
-		intent.putExtra("app", PendingIntent.getBroadcast(this, 0, new Intent(), 0));
-		intent.putExtra("sender", "570878405761");
-		startService(intent);
+	private void registerForPush() {
+		GCMRegistrar.register(this, SENDER_ID);
 	}
 
 	private EditText getUsernameField() {
