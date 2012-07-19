@@ -1,5 +1,5 @@
 # Stackmob Android Starter
-This is a full Eclipse project that can serve as a foundation for your StackMob powered Android app. To begin using it, simply download the [latest distribution](https://github.com/downloads/stackmob/stackmob-android-starter/stackmob-android-starter-v0.5.0.zip), open Eclipse, and File -> Import -> Archive File and begin building.
+This is a full Eclipse project that can serve as a foundation for your StackMob powered Android app. To begin using it, simply download the [latest distribution](https://github.com/downloads/stackmob/stackmob-android-starter/stackmob-android-starter-v0.5.1.zip), open Eclipse, and File -> Import -> Archive File and begin building.
 
 # Getting Help
 We have 2 ways for you to get help with the Android Starter project:
