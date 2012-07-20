@@ -20,5 +20,6 @@
         </activity>
         <activity android:name=".TaskActivity" android:label="@string/task_list" />
         <activity android:name=".AddTaskActivity" android:label="@string/add_task" />
+        <activity android:name=".LoginActivity" android:label="@string/login" />
     </application>
 </manifest>
