@@ -1,6 +1,5 @@
 package com.stackmob.taskmob;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.stackmob.taskmob.R;
@@ -9,8 +8,6 @@ import com.stackmob.sdk.api.StackMob;
 import com.stackmob.sdk.callback.StackMobCallback;
 import com.stackmob.sdk.callback.StackMobQueryCallback;
 import com.stackmob.sdk.exception.StackMobException;
-import com.stackmob.sdk.model.StackMobModelQuery;
-import com.stackmob.sdk.model.StackMobUser;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -23,12 +20,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class TaskMob extends ListActivity {
+	
 	protected static final String TASKLIST_KEY = "task_list";
 	protected static final String TASKLIST_RETURN_KEY = "modified_task_list";
 	protected static final String TASKLIST_INDEX = "task_list_index";
 	protected static final String LOGGED_IN_USER = "logged_in_user";
 
-	private StackMobModelQuery<TaskList> tasksQuery = new StackMobModelQuery<TaskList>(TaskList.class).expandDepthIs(1);
 	private TaskListAdapter adapter;
 	private Button addTaskListButton;
 	private TextView addTaskListName;
@@ -37,13 +34,7 @@ public class TaskMob extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		StackMobCommon.OAUTH_VERSION = StackMob.OAuthVersion.Two;
-		  StackMobCommon.API_KEY = "5c29caee-71f9-4c64-9cf8-fb10a11841f3";
-		  StackMobCommon.USER_OBJECT_NAME = "user";
-		  StackMobCommon.API_VERSION = 0;
-		  StackMobCommon.API_URL_FORMAT = "api.mob1.stackmob.com";
-		  StackMobCommon.PUSH_API_URL_FORMAT = "push.mob1.stackmob.com";
-		StackMobCommon.init(this.getApplicationContext());
+		StackMobCommon.init(this.getApplicationContext(), "5c29caee-71f9-4c64-9cf8-fb10a11841f3", 0);
 		addTaskListButton = (Button) this.findViewById(R.id.add_tasklist_button);
 		addTaskListName = (TextView) this.findViewById(R.id.add_tasklist_text);
 		addTaskListButton.setOnClickListener(new OnClickListener() {
@@ -104,7 +95,7 @@ public class TaskMob extends ListActivity {
 			
 			@Override
 			public void failure(StackMobException e) {
-				Toast.makeText(getApplicationContext(), "Error loading data " + e.getMessage(), 5).show();
+				Toast.makeText(getApplicationContext(), "Error loading data " + e.getMessage(), Toast.LENGTH_LONG).show();
 				
 			}
 		});
