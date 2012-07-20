@@ -8,6 +8,11 @@
     <uses-permission android:name="com.stackmob.taskmob.C2D_MESSAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.INTERNET" /> 
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> 
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
     
     <uses-sdk android:minSdkVersion="8" />
 
@@ -21,5 +26,15 @@
         <activity android:name=".TaskActivity" android:label="@string/task_list" />
         <activity android:name=".AddTaskActivity" android:label="@string/add_task" />
         <activity android:name=".LoginActivity" android:label="@string/login" />
+    	<receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
+  			<intent-filter>
+    			<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    			<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+    			<category android:name="com.stackmob.android" />
+  			</intent-filter>
+		</receiver>
+		
+    	<service android:name=".GCMIntentService" />
     </application>
+    
 </manifest>

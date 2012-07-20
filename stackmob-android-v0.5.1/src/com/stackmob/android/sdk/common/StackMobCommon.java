@@ -30,7 +30,7 @@ public class StackMobCommon {
 	public static OAuthVersion OAUTH_VERSION = OAuthVersion.One;
 	public static String API_KEY = "YOUR_API_KEY_HERE";
 	public static String API_SECRET = "YOUR_API_SECRET_HERE";
-	public static String USER_OBJECT_NAME = "YOUR_USER_OBJECT_NAME_HERE";
+	public static String USER_OBJECT_NAME = "user";
 	public static Integer API_VERSION = 0;
 	
 	public static String API_URL_FORMAT = "api.mob1.stackmob.com";
@@ -54,10 +54,25 @@ public class StackMobCommon {
 		}
 	};
 	
+	// Init using the constants above
 	public static void init(Context c) {
-		StackMob.setStackMob(new StackMob(OAUTH_VERSION, API_KEY, API_SECRET, USER_OBJECT_NAME, API_VERSION, API_URL_FORMAT, PUSH_API_URL_FORMAT, redirectedCallback));
+		init(c, OAUTH_VERSION, API_KEY, API_SECRET, USER_OBJECT_NAME, API_VERSION, API_URL_FORMAT, PUSH_API_URL_FORMAT);
+	}
+	
+	// Init with minimal information and the most basic defaults
+	public static void init(Context c, String publicKey, int apiVersion) {
+		init(c, OAuthVersion.Two, publicKey, "", USER_OBJECT_NAME, apiVersion, API_URL_FORMAT, PUSH_API_URL_FORMAT);
+	}
+	
+	// Init with minimal information for oauth1 and the most basic defaults
+	public static void init(Context c, String publicKey, String privateKey, int apiVersion) {
+		init(c, OAuthVersion.Two, publicKey, "", USER_OBJECT_NAME, apiVersion, API_URL_FORMAT, PUSH_API_URL_FORMAT);
+	}
+	
+	// Init specifying all options
+	public static void init(Context c, OAuthVersion version, String publicKey, String privateKey, String userObjectName, int apiVersion, String apiUrlFormat, String pushUrlFormat) {
+		StackMob.setStackMob(new StackMob(version, publicKey, privateKey, userObjectName, apiVersion, apiUrlFormat, pushUrlFormat, redirectedCallback));
 		StackMob.getStackMob().setSession(new StackMobAndroidSession(c, StackMob.getStackMob().getSession()));
-		StackMob.getStackMob().getSession().setOAuthVersion(OAUTH_VERSION); //The copy ctor needs to be fixed
 		StackMob.setUserAgentName("Android");
 		StackMob.setLogger(new StackMobAndroidLogger());
 		StackMob.getLogger().setLogging(LOGGING_ENABLED);
