@@ -26,7 +26,7 @@ public class TaskActivity extends ListActivity {
 		try {
 			taskList.fillFromJson(getIntent().getExtras().getString(TaskMob.TASKLIST_KEY));
 		} catch (StackMobException e) {
-			Toast.makeText(getApplicationContext(), "Error deserializing " + e.getMessage(), 5);
+			Toast.makeText(getApplicationContext(), "Error deserializing " + e.getMessage(), Toast.LENGTH_LONG);
 		}
 		index = getIntent().getIntExtra(TaskMob.TASKLIST_INDEX, 0);
 		

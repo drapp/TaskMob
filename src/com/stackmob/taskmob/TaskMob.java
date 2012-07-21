@@ -1,5 +1,6 @@
 package com.stackmob.taskmob;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.stackmob.taskmob.R;
@@ -29,12 +30,14 @@ public class TaskMob extends ListActivity {
 	private TaskListAdapter adapter;
 	private Button addTaskListButton;
 	private TextView addTaskListName;
+	private User user;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		StackMobCommon.init(this.getApplicationContext(), "5c29caee-71f9-4c64-9cf8-fb10a11841f3", 0);
+		StackMobCommon.init(getApplicationContext(), "5c29caee-71f9-4c64-9cf8-fb10a11841f3", "YOUR_API_SECRET_HERE", 0);
+		StackMob.getLogger().setLogging(true);
 		addTaskListButton = (Button) this.findViewById(R.id.add_tasklist_button);
 		addTaskListName = (TextView) this.findViewById(R.id.add_tasklist_text);
 		addTaskListButton.setOnClickListener(new OnClickListener() {
@@ -48,6 +51,9 @@ public class TaskMob extends ListActivity {
 		    @Override
 		    public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
 		    	Intent i = new Intent(getApplicationContext(), TaskActivity.class);
+		   
+		    	i.putExtra(TASKLIST_INDEX, pos);
+		    	i.putExtra(TASKLIST_KEY, adapter.getItem(pos).toJsonWithDepth(1));
 		    	startActivityForResult(i, 1);
 		    }
 		});
@@ -57,7 +63,8 @@ public class TaskMob extends ListActivity {
 				@Override
 				public void success(List<User> list) {
 					if(list.size() > 0) {
-						loadTasks(list.get(0));
+						user = list.get(0);
+						loadTasks();
 					} else {
 						doLogin();
 					}
@@ -80,12 +87,13 @@ public class TaskMob extends ListActivity {
 
 	private void addTaskList(String name) {
 		TaskList newList = new TaskList(name);
-		newList.save();
-		adapter.add(newList);
+		user.getTaskLists().add(newList);
+		user.save();
+		//adapter.add(newList);
 		adapter.notifyDataSetChanged();
 	}
 
-	private void loadTasks(final User user) {
+	private void loadTasks() {
 		user.fetchWithDepth(2, new StackMobCallback() {
 			
 			@Override
@@ -101,13 +109,12 @@ public class TaskMob extends ListActivity {
 		});
 	}
 	
-	private void initAdapter(List<TaskList> taskLists) {
-		final List<TaskList> listsToAdd = taskLists;
+	private void initAdapter(final List<TaskList> taskLists) {
 		//StackMobCallbacks come back on a different thread
 		runOnUiThread(new Runnable() {	
 			@Override
 			public void run() {
-				adapter = new TaskListAdapter(getApplicationContext(), R.layout.tasklistrow, listsToAdd);
+				adapter = new TaskListAdapter(getApplicationContext(), R.layout.tasklistrow, taskLists);
 				setListAdapter(adapter);
 				adapter.notifyDataSetChanged();
 			}
@@ -125,9 +132,8 @@ public class TaskMob extends ListActivity {
 				}
 			} else if(requestCode == 1) {
 				if(data.getExtras().containsKey(LOGGED_IN_USER)) {
-					User user = new User("","");
-					user.fillFromJson(data.getStringExtra(LOGGED_IN_USER));
-					loadTasks(user);
+					user = User.newFromJson(User.class, data.getStringExtra(LOGGED_IN_USER));
+					loadTasks();
 				}
 			}
 		} catch (StackMobException e) {

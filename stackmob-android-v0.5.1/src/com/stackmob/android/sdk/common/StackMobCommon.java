@@ -61,12 +61,12 @@ public class StackMobCommon {
 	
 	// Init with minimal information and the most basic defaults
 	public static void init(Context c, String publicKey, int apiVersion) {
-		init(c, OAuthVersion.Two, publicKey, "", USER_OBJECT_NAME, apiVersion, API_URL_FORMAT, PUSH_API_URL_FORMAT);
+		init(c, OAuthVersion.Two, publicKey, "None", USER_OBJECT_NAME, apiVersion, API_URL_FORMAT, PUSH_API_URL_FORMAT);
 	}
 	
 	// Init with minimal information for oauth1 and the most basic defaults
 	public static void init(Context c, String publicKey, String privateKey, int apiVersion) {
-		init(c, OAuthVersion.Two, publicKey, "", USER_OBJECT_NAME, apiVersion, API_URL_FORMAT, PUSH_API_URL_FORMAT);
+		init(c, OAuthVersion.Two, publicKey, privateKey, USER_OBJECT_NAME, apiVersion, API_URL_FORMAT, PUSH_API_URL_FORMAT);
 	}
 	
 	// Init specifying all options

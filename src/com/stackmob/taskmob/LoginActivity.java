@@ -1,5 +1,7 @@
 package com.stackmob.taskmob;
 
+import com.stackmob.sdk.api.StackMob;
+import com.stackmob.sdk.api.StackMobSession;
 import com.stackmob.sdk.callback.StackMobCallback;
 import com.stackmob.sdk.exception.StackMobException;
 import com.stackmob.sdk.model.StackMobUser;
@@ -48,6 +50,7 @@ public class LoginActivity extends Activity {
 			
 			@Override
 			public void success(String arg0) {
+				StackMobSession session = StackMob.getStackMob().getSession();
 				Intent i = getIntent();
 				i.putExtra(TaskMob.LOGGED_IN_USER, user.toJson());
 				setResult(RESULT_OK, i);

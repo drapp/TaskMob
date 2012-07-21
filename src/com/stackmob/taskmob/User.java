@@ -11,9 +11,12 @@ public class User extends StackMobUser {
 		super(User.class, username, password);
 	}
 	
-	private List<TaskList> taskLists = new ArrayList<TaskList>();
+	private List<TaskList> taskLists;
 	
 	public List<TaskList>  getTaskLists() {
+		if(taskLists == null) {
+			taskLists = new ArrayList<TaskList>();
+		}
 		return taskLists;
 	}
 	
